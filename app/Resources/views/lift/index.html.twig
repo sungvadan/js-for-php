@@ -75,45 +75,40 @@
 
                 this.$wrapper.find('.js-delete-rep-log').on(
                     'click',
-                    this.handleRepLogDelete
+                    this.handleRepLogDelete.bind(this)
                 );
                 this.$wrapper.find('tbody tr').on(
                     'click',
-                    this.handleRowClick
+                    this.handleRowClick.bind(this)
                 );
             },
 
             handleRepLogDelete: function (e) {
                 e.preventDefault();
-                $(this).addClass('text-danger');
-                $(this).find('.fa')
+                var $link = $(e.currentTarget);
+                $link.addClass('text-danger');
+                $link.find('.fa')
                     .removeClass('fa-trash')
                     .addClass('fa-spinner')
                     .addClass('fa-spin');
-                var deleteUrl = $(this).data('url');
-                var $row = $(this).closest('tr');
+                var deleteUrl = $link.data('url');
+                var $row = $link.closest('tr');
+                var self = this
                 $.ajax({
                     url : deleteUrl,
                     method: 'DELETE',
                     success: function () {
                         $row.fadeOut('normal',function () {
                             $row.remove();
-                            RepLogApp.updateTotalWeightLifted();
+                            self.updateTotalWeightLifted();
                         });
                     }
-                })
-
-//            $(e.target).addClass('text-danger');
-//
-//            console.dir(e.target);
-//            console.dir(e.currentTarget === this);
-                console.log('delete');
+                });
             },
-
+            
             handleRowClick: function () {
                 console.log('row click');
             },
-
             updateTotalWeightLifted: function () {
                 var totalWeight = 0;
                 this.$wrapper.find('tbody tr').each(function () {
