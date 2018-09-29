@@ -18,5 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="underscore" level="application" />
   </component>
 </module>
