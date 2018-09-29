@@ -4,6 +4,13 @@
         initialize: function ($wrapper) {
             this.$wrapper = $wrapper;
             this.helper = new Helper($wrapper);
+            console.log(
+                'test'.__proto__,
+                [].__proto__,
+                (new Date()).__proto__
+
+
+            );
             this.$wrapper.find('.js-delete-rep-log').on(
                 'click',
                 this.handleRepLogDelete.bind(this)
@@ -11,10 +18,7 @@
             this.$wrapper.find('tbody tr').on(
                 'click',
                 this.handleRowClick.bind(this)
-            );
-            console.log(this.helper, Object.keys(this.helper));
-            console.log(Helper, Object.keys(Helper));
-            console.log(this.helper.caculateTotalWeight());
+            );;
         },
 
         handleRepLogDelete: function (e) {
