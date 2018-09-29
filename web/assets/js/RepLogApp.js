@@ -1,26 +1,26 @@
 'use strict';
 (function (window, $) {
-    window.RepLogApp = {
-        initialize: function ($wrapper) {
-            this.$wrapper = $wrapper;
-            this.helper = new Helper($wrapper);
-            console.log(
-                'test'.__proto__,
-                [].__proto__,
-                (new Date()).__proto__
+    window.RepLogApp = function ($wrapper) {
+        this.$wrapper = $wrapper;
+        this.helper = new Helper($wrapper);
+        console.log(
+            'test'.__proto__,
+            [].__proto__,
+            (new Date()).__proto__
 
 
-            );
-            this.$wrapper.find('.js-delete-rep-log').on(
-                'click',
-                this.handleRepLogDelete.bind(this)
-            );
-            this.$wrapper.find('tbody tr').on(
-                'click',
-                this.handleRowClick.bind(this)
-            );;
-        },
+        );
+        this.$wrapper.find('.js-delete-rep-log').on(
+            'click',
+            this.handleRepLogDelete.bind(this)
+        );
+        this.$wrapper.find('tbody tr').on(
+            'click',
+            this.handleRowClick.bind(this)
+        );;
+    };
 
+    $.extend(window.RepLogApp.prototype,{
         handleRepLogDelete: function (e) {
             e.preventDefault();
             var $link = $(e.currentTarget);
@@ -43,7 +43,6 @@
                 }
             });
         },
-
         handleRowClick: function () {
             console.log('row click');
         },
@@ -52,7 +51,8 @@
                 this.helper.caculateTotalWeight()
             );
         },
-    };
+
+    })
 
     /**
      * Private object
@@ -61,11 +61,14 @@
     var Helper = function ($wrapper) {
             this.$wrapper = $wrapper;
     };
-    Helper.prototype.caculateTotalWeight = function () {
+
+    $.extend(Helper.prototype, {
+        caculateTotalWeight : function () {
             var totalWeight = 0;
             this.$wrapper.find('tbody tr').each(function () {
                 totalWeight += $(this).data('weight');
             });
             return totalWeight;
-    };
+        }
+    });
 })(window, jQuery);
