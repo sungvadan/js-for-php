@@ -67,10 +67,21 @@
     {{ parent() }}
     <script>
     $(document).ready(function(){
-        var $table = $('.js-rep-log-table')
-        $table.find('.js-delete-rep-log').on('click',function () {
+        var $table = $('.js-rep-log-table');
+        $table.find('.js-delete-rep-log').on('click',function (e) {
+            e.preventDefault();
+            $(this).addClass('text-danger');
+            $(this).find('.fa')
+                .removeClass('fa-trash')
+                .addClass('fa-spinner')
+                .addClass('fa-spin');
+
+
+//            $(e.target).addClass('text-danger');
+//
+//            console.dir(e.target);
+//            console.dir(e.currentTarget === this);
             console.log('delete');
-            return false;
         })
         $table.find('tbody tr').on('click',function () {
             console.log('row click');
