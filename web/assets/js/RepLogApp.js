@@ -1,5 +1,5 @@
 'use strict';
-(function (window, $, Routing) {
+(function (window, $, Routing, swal) {
     window.RepLogApp = function ($wrapper) {
         this.$wrapper = $wrapper;
         this.helper = new Helper($wrapper);
@@ -46,6 +46,20 @@
         handleRepLogDelete: function (e) {
             e.preventDefault();
             var $link = $(e.currentTarget);
+            var self = this;
+            swal({
+                title: 'Delete this log',
+                text: "What? did you not actually lift this",
+                showCancelButton: true
+            }).then(function (result){
+                console.log('cancel', result );
+                    self._deleteRepLog($link);
+            }).catch(function (arg) {
+                    console.log('cancel', arg );
+            });
+
+        },
+        _deleteRepLog: function($link){
             $link.addClass('text-danger');
             $link.find('.fa')
                 .removeClass('fa-trash')
@@ -65,7 +79,7 @@
             });
         },
         handleRowClick: function () {
-            console.log('row click');
+            // console.log('row click');
         },
         updateTotalWeightLifted: function () {
             this.$wrapper.find('.js-total-weight').html(
@@ -84,8 +98,7 @@
            .then(function (data) {
                 self._clearForm();
                 self._addRow(data);
-            }).catch(function (jqXHR) {
-                var errorData = JSON.parse(jqXHR.responseText);
+            }).catch(function (errorData) {
                 self._mapErrorsToForm(errorData['errors']);
             })
         },
@@ -103,7 +116,8 @@
                         resolve(data);
                     })
                 }).catch(function (jqXHR) {
-                    reject(jqXHR);
+                    var errorData = JSON.parse(jqXHR.responseText);
+                    reject(errorData);
                 })
             });
         },
@@ -162,4 +176,4 @@
             return totalWeight;
         }
     });
-})(window, jQuery, Routing);
+})(window, jQuery, Routing, swal);
