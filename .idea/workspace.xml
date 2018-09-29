@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="48bd2de5-6bc1-4b31-9b08-68950989679c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/data.db3" afterPath="$PROJECT_DIR$/app/data.db3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/lift/_form.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/lift/_form.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/LiftController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/LiftController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/js/RepLogApp.js" afterPath="$PROJECT_DIR$/web/assets/js/RepLogApp.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,18 +17,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1538158687958" expanded="true" signature="58:244" ph="parameters: &lt;6 keys&gt;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="parameters.yml.dist" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,8 +52,18 @@
       <file leaf-file-name="_form.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/lift/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="49" />
+            <state relative-caret-position="0">
+              <caret line="0" column="87" lean-forward="false" selection-start-line="0" selection-start-column="87" selection-end-line="0" selection-end-column="87" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RepLogController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RepLogController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="54" column="40" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -82,8 +82,8 @@
       <file leaf-file-name="RepLogApp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/assets/js/RepLogApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="286">
+              <caret line="88" column="63" lean-forward="false" selection-start-line="88" selection-start-column="63" selection-end-line="88" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -102,12 +102,10 @@
       <file leaf-file-name="LiftController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/LiftController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+            <state relative-caret-position="203">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
-                <element signature="e#899#923#0#PHP" expanded="true" />
-                <element signature="e#1100#1106#1#PHP" expanded="true" />
-                <element signature="e#1479#1501#0#PHP" expanded="true" />
+                <element signature="e#918#924#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,6 +127,9 @@
     <findStrings>
       <find>$table</find>
       <find>hel</find>
+      <find>re</find>
+      <find>rep_log</find>
+      <find>consol</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,10 +140,10 @@
       <list>
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
-        <option value="$PROJECT_DIR$/app/Resources/views/lift/_form.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/lift/_repRow.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/lift/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/LiftController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/lift/_form.html.twig" />
         <option value="$PROJECT_DIR$/web/assets/js/RepLogApp.js" />
       </list>
     </option>
@@ -502,12 +503,12 @@
       <option name="presentableId" value="Default" />
       <updated>1538158379362</updated>
       <workItem from="1538158380736" duration="3492000" />
-      <workItem from="1538205094884" duration="12252000" />
+      <workItem from="1538205094884" duration="14574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15744000" />
+    <option name="totallyTimeSpent" value="18066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
@@ -638,14 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/lift/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/lift/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -672,22 +665,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/lift/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="87" lean-forward="false" selection-start-line="0" selection-start-column="87" selection-end-line="0" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RepLogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="54" column="40" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/LiftController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+        <state relative-caret-position="203">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#899#923#0#PHP" expanded="true" />
-            <element signature="e#1100#1106#1#PHP" expanded="true" />
-            <element signature="e#1479#1501#0#PHP" expanded="true" />
+            <element signature="e#918#924#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/js/RepLogApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state relative-caret-position="286">
+          <caret line="88" column="63" lean-forward="false" selection-start-line="88" selection-start-column="63" selection-end-line="88" selection-end-column="63" />
           <folding />
         </state>
       </provider>
