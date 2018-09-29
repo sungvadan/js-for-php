@@ -35,12 +35,11 @@
         _loadRepLogs: function () {
             var self = this
             $.ajax({
-                url: Routing.generate('rep_log_list'),
-                success: function (data) {
-                    $.each(data.items, function (key, repLog) {
-                        self._addRow(repLog);
-                    });
-                }
+                url: Routing.generate('rep_log_list')
+            }).then(function (data) {
+                $.each(data.items, function (key, repLog) {
+                    self._addRow(repLog);
+                });
             })
         },
 
@@ -57,13 +56,12 @@
             var self = this
             $.ajax({
                 url: deleteUrl,
-                method: 'DELETE',
-                success: function () {
-                    $row.fadeOut('normal', function () {
-                        $row.remove();
-                        self.updateTotalWeightLifted();
-                    });
-                }
+                method: 'DELETE'
+            }).then(function () {
+                $row.fadeOut('normal', function () {
+                    $row.remove();
+                    self.updateTotalWeightLifted();
+                });
             });
         },
         handleRowClick: function () {
@@ -82,19 +80,32 @@
                 formData[fieldData.name] = fieldData.value;
             })
             var self = this;
-            $.ajax({
-                url: $form.data('url'),
-                method: 'POST',
-                data: JSON.stringify(formData),
-                success: function (data) {
-                    self._clearForm();
-                    self._addRow(data);
-                },
-                error:function (jqXhr) {
-                    var errorData = JSON.parse(jqXhr.responseText);
-                    self._mapErrorsToForm(errorData['errors']);
-                }
+           this._saveRepLog(formData)
+           .then(function (data) {
+                self._clearForm();
+                self._addRow(data);
+            }).catch(function (jqXHR) {
+                var errorData = JSON.parse(jqXHR.responseText);
+                self._mapErrorsToForm(errorData['errors']);
             })
+        },
+
+        _saveRepLog:function (formData) {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: Routing.generate('rep_log_new'),
+                    method: 'POST',
+                    data: JSON.stringify(formData)
+                }).then(function (data, textStatus, jqXHR) {
+                    $.ajax({
+                        url: jqXHR.getResponseHeader('Location')
+                    }).then(function (data) {
+                        resolve(data);
+                    })
+                }).catch(function (jqXHR) {
+                    reject(jqXHR);
+                })
+            });
         },
         _mapErrorsToForm: function (errorData) {
             var $form = this.$wrapper.find(this._selectors.newRepForm);
