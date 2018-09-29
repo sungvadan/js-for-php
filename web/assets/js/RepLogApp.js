@@ -17,7 +17,11 @@
         this.$wrapper.find('tbody tr').on(
             'click',
             this.handleRowClick.bind(this)
-        );;
+        );
+        this.$wrapper.find('.js-new-rep-log-form').on(
+            'submit',
+            this.handleFormSubmit.bind(this)
+        )
     };
 
     $.extend(window.RepLogApp.prototype,{
@@ -51,6 +55,15 @@
                 this.helper.caculateTotalWeight()
             );
         },
+        handleFormSubmit: function (e) {
+            e.preventDefault();
+            var $form = $(e.currentTarget);
+            $.ajax({
+                url: $form.attr('action'),
+                method: 'POST',
+                data: $form.serialize()
+            })
+        }
 
     })
 
