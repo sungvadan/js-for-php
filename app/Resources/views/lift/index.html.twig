@@ -21,12 +21,15 @@
                 </thead>
                 <tbody>
                 {% for repLog in repLogs %}
-                    <tr>
+                    <tr data-weight="{{ repLog.totalWeightLifted }}">
                         <td>{{ repLog.itemLabel|trans }}</td>
                         <td>{{ repLog.reps }}</td>
                         <td>{{ repLog.totalWeightLifted }}</td>
                         <td>
-                            <a href="#" class="js-delete-rep-log">
+                            <a href="#"
+                               class="js-delete-rep-log"
+                               data-url="{{ path('rep_log_delete', {'id':repLog.id}) }}"
+                            >
                                 <span class="fa fa-trash"></span>
                             </a>
                         </td>
@@ -41,7 +44,7 @@
                     <tr>
                         <td>&nbsp;</td>
                         <th>Total</th>
-                        <th>{{ totalWeight }}</th>
+                        <th class="js-total-weight">{{ totalWeight }}</th>
                         <td>&nbsp;</td>
                     </tr>
                 </tfoot>
@@ -75,7 +78,18 @@
                 .removeClass('fa-trash')
                 .addClass('fa-spinner')
                 .addClass('fa-spin');
-
+            var deleteUrl = $(this).data('url');
+            var $row = $(this).closest('tr');
+            var $totalWeightContainer = $table.find('.js-total-weight');
+            var $newWeight = $totalWeightContainer.html() - $row.data('weight');
+            $.ajax({
+                url : deleteUrl,
+                method: 'DELETE',
+                success: function () {
+                    $row.fadeOut();
+                    $totalWeightContainer.html($newWeight);
+                }
+            })
 
 //            $(e.target).addClass('text-danger');
 //
