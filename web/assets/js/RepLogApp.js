@@ -12,6 +12,9 @@
                 'click',
                 this.handleRowClick.bind(this)
             );
+            console.log(this.helper, Object.keys(this.helper));
+            console.log(Helper, Object.keys(Helper));
+            console.log(this.helper.caculateTotalWeight());
         },
 
         handleRepLogDelete: function (e) {
@@ -45,7 +48,6 @@
                 this.helper.caculateTotalWeight()
             );
         },
-
     };
 
     /**
@@ -55,7 +57,7 @@
     var Helper = function ($wrapper) {
             this.$wrapper = $wrapper;
     };
-    Helper.caculateTotalWeight = function () {
+    Helper.prototype.caculateTotalWeight = function () {
             var totalWeight = 0;
             this.$wrapper.find('tbody tr').each(function () {
                 totalWeight += $(this).data('weight');
