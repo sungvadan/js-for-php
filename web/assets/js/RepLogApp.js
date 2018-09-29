@@ -58,10 +58,19 @@
         handleFormSubmit: function (e) {
             e.preventDefault();
             var $form = $(e.currentTarget);
+            var tbody = this.$wrapper.find('tbody');
+            var self = this;
             $.ajax({
                 url: $form.attr('action'),
                 method: 'POST',
-                data: $form.serialize()
+                data: $form.serialize(),
+                success: function (data) {
+                    tbody.append(data);
+                    self.updateTotalWeightLifted();
+                },
+                error:function (jqXhr) {
+                    $form.closest('.js-new-rep-log-form-wrapper').html(jqXhr.responseText);
+                }
             })
         }
 
